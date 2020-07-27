@@ -1,0 +1,95 @@
+/*
+ * SETTINGS
+ */
+
+:root {
+    --global-color-primary--x-light: #FFFFFF;
+    --global-color-primary--light: #CCCCCC; /* WARNING: Unofficial */
+    --global-color-primary--normal: #707070;
+    --global-color-primary--dark: #333333;
+    --global-color-primary--x-dark: #000000;
+
+    --global-color-secondary--normal: #988F8F;
+
+    --global-border: var(--global-border-width) solid var(--global-color-primary--x-dark);
+    --global-border-width: 1px;
+}
+
+
+
+
+
+/*
+ * COMPONENTS
+ */
+
+/*
+Gallery
+
+A gallery of apps to launch, images to view, etc.
+
+Markup:
+<div class="gallery">
+    <h1 class="gallery__title">Gallery of Things</h1>
+    <div class="gallery__item">
+        <h2 class="gallery__item-title">Thing 1</h2>
+        <figure class="gallery__item-figure">
+            <img class="gallery__item-image" />
+            <figcaption class="gallery__item-desc">The best thing.</figcaption>
+        </figure>
+    </div>
+    <div class="gallery__item">
+        <h2 class="gallery__item-title">Thing 2</h2>
+        <figure class="gallery__item-figure">
+            <img class="gallery__item-image" />
+            <figcaption class="gallery__item-desc">The next best thing.</figcaption>
+        </figure>
+    </div>
+</div>
+*/
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+}
+
+.gallery__item {
+    flex: 1;
+    position: relative; /* For aboslutely positioned children, like `u-stretched-link` */
+
+    border: var(--global-border);
+}
+
+
+
+
+
+/*
+ * UTILITIES
+ */
+
+/*
+Stretched Link
+
+Stretch a link to encompass all area of a container.
+
+*__Notice:__ The contianer filled is the first ancestor with a `position` other than `static`.*
+
+Reference:
+
+- [`stretched-link` | Bootstrap 4.3](https://getbootstrap.com/docs/4.3/utilities/stretched-link/)
+*/
+
+.u-stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: transparent;
+}

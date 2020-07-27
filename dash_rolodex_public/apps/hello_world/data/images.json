@@ -1,0 +1,10 @@
+{
+    "texas": {
+        "label": "Texas",
+        "filename": "texas.jpeg"
+    },
+    "washingtondc": {
+        "label": "Washington DC",
+        "filename": "washingtondc.png"
+    }
+}
