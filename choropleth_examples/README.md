@@ -31,15 +31,23 @@ ls
 *desired output*
 
 ```
-app00.py  app01.py  app02.py  app03.py	README.md
+app00.py  
+app01.py  
+app02.py  
+app03.py  
+app04.py    
+README.md
 ```
 
 3. Try this *command line input*: `python3 app00.py`. No output? Look at <https://127.0.0.1:8050>.
 
 4. Something's wrong? Have you installed the **required packages** with `pip3`? 
 
-> Never `pip3` with `sudo`! The install command `pip3 install --user` is my preference, and probably the wrong way to do things, but fine for a hackathon. 
+> Never `pip3` with `sudo`! The install command `pip3 install --user` is my preference, and (maybe) the wrong way to do things, but fine for a hackathon. 
 
+5. Go ahead and try (for *i* from 1 to 4) `python3 app0`*i*`.py`.
+
+6. `app04.py` is "probably the best example" to work from.
 
 ## Required Packages
 
@@ -61,7 +69,7 @@ pip3 install --user dash==1.14.0
 
 ## Talk to you peers about this section!
 
-These coropleth map examples exhibit a legacy "figure factory" method for creating map-like figures using self-filled scatter traces. 
+These coropleth map examples (`app00.py`--`app03.py`) exhibit a legacy "figure factory" method for creating map-like figures using self-filled scatter traces.  The last map example (`app04.py`) does not use this legacy feature, and is hence "probably the best example".
 
 The (depreciated) documentation for the function `plotly.figure_factory.create_choropleth` is here: 
 
