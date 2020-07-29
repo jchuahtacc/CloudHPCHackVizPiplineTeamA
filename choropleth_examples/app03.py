@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 #
 # 2020-07-28 
-# Colton Grainger 
 
 """
 Multiple States
