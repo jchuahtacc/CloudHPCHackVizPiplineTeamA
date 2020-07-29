@@ -8,7 +8,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
-# state to
+# included states and us areas along with fips code
 statetofips= {
    "Alabama"                :  "01",
    "Alaska"                 :  "02",
@@ -68,7 +68,7 @@ statetofips= {
     "Northern Mariana Islands"	:	"69"
 
 }
-
+#fips code
 fipstocode= { '66' : "GU", '60' : "AS", '78' : "VI", '69': "MP", '72': "PR", '01': 'AL', '02': 'AK', '04': 'AZ', '05': 'AR', '06': 'CA', '08': 'CO', '09': 'CT', '10': 'DE', '11': 'DC', '12': 'FL', '13': 'GA', '15': 'HI', '16': 'ID', '17': 'IL', '18': 'IN', '19': 'IA', '20': 'KS', '21': 'KY', '22': 'LA', '23': 'ME', '24': 'MD', '25': 'MA', '26': 'MI', '27': 'MN', '28': 'MS', '29': 'MO', '30': 'MT', '31': 'NE', '32': 'NV', '33': 'NH', '34': 'NJ', '35': 'NM', '36': 'NY', '37': 'NC', '38': 'ND', '39': 'OH', '40': 'OK', '41': 'OR', '42': 'PA', '44': 'RI', '45': 'SC', '46': 'SD', '47': 'TN', '48': 'TX', '49': 'UT', '50': 'VT', '51': 'VA', '53': 'WA', '54': 'WV', '55': 'WI', '56': 'WY' }
 
 
@@ -79,20 +79,15 @@ df = pd.read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master
 
 df.reset_index(inplace=True)
 df['code'] = df.apply(lambda row: fipstocode[statetofips[row['state']]], axis=1)
-df = df[df["date"] == "2020-05-24"]
+# df = df[df["date"] == "2020-07-27"]
 print(df[:5])
-fig = px.choropleth(
-    data_frame=df,
-    locationmode='USA-states',
-    locations='code',
-    scope="usa",
-    color='cases',
-    range_color= (0,100000),
-
-    color_continuous_scale=px.colors.sequential.YlOrRd,
-    template='plotly_dark'
+dates = pd.read_csv("dates.csv")
+print(dates.loc[[0]])
+slider = dcc.Slider(
+    id='my-slider',
+    min=0,
+    max=len(dates),
 )
-
 # ---Pearc20
 # App layout
 app.layout = html.Div([
@@ -103,51 +98,42 @@ app.layout = html.Div([
     html.Div(id='output_container', children=[]),
     html.Br(),
 
-    dcc.Graph(id='my_bee_map', figure=fig)
-
+    dcc.Graph(id='my_bee_map', figure={}),
+    slider
 ])
 
 
 # ------------------------------------------------------------------------------
+#
+@app.callback(
+    dash.dependencies.Output('my_bee_map', 'figure'),
+    [dash.dependencies.Input('my-slider', 'value')])
 # Connect the Plotly graphs with Dash Components
-def update_graph():
+def update_graph(value):
+#If value is none select the first date
+    if value == None:
+        value = 0
 
+# find the date string by index
+    date = dates['dates'].iloc[value]
 
-    dff = df.copy()
-    dff = dff[dff["date"] == option_slctd]
+# Filter the data for that date
+    filtered = df[df["date"] == date]
 
-
-    # Plotly Express
+# Generate a new map using the filtered data
     fig = px.choropleth(
-        data_frame=dff,
+        data_frame=df,
         locationmode='USA-states',
-        locations='fips',
-        scope="us",
+        locations='code',
+        scope="usa",
         color='cases',
+        range_color=(0, 200000),
 
         color_continuous_scale=px.colors.sequential.YlOrRd,
         template='plotly_dark'
     )
 
-    # Plotly Graph Objects (GO)
-    # fig = go.Figure(
-    #     data=[go.Choropleth(
-    #         locationmode='USA-states',
-    #         locations=dff['state_code'],
-    #         z=dff["Pct of Colonies Impacted"].astype(float),
-    #         colorscale='Reds',
-    #     )]
-    # )
-    #
-    # fig.update_layout(
-    #     title_text="Bees Affected by Mites in the USA",
-    #     title_xanchor="center",
-    #     title_font=dict(size=24),
-    #     title_x=0.5,
-    #     geo=dict(scope='usa'),
-    # )
-
-    return container, fig
+    return fig
 
 
 # ------------------------------------------------------------------------------
