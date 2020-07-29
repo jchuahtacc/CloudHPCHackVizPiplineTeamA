@@ -93,7 +93,7 @@ slider = dcc.Slider(
 # App layout
 app.layout = html.Div([
 
-    html.H1("Pearc20", style={'text-align': 'center'}),
+    html.H1("PEARC20 COVID19 Heatmap (Cum. Cases)", style={'text-align': 'center'}),
 
 
     html.Div(id='output_container', children=[]),

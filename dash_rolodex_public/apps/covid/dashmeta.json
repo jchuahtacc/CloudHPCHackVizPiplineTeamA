@@ -1,0 +1,5 @@
+{
+    "name": "COVID19 heatmap",
+    "description": "A geographical time series heatmap",
+    "thumbnail": "thumbnail.png"
+}
