@@ -67,6 +67,7 @@ fipstocode = { '66' : 'GU', '60' : 'AS', '78' : 'VI', '69': 'MP', '72': 'PR', '0
 # reading in values from web hosted csv
 df = pd.read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv")
 
+# modifying state names to abbreviations
 df.reset_index(inplace=True)
 df['code'] = df.apply(lambda row: fipstocode[statetofips[row['state']]], axis=1)
 
