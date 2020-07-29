@@ -39,7 +39,7 @@ app04.py
 README.md
 ```
 
-3. Try this *command line input*: `python3 app00.py`. No output? Look at <https://127.0.0.1:8050>.
+3. Try this *command line input*: `python3 app00.py`. No output? Look at <http://127.0.0.1:8050>.
 
 4. Something's wrong? Have you installed the **required packages** with `pip3`? 
 
