@@ -67,7 +67,7 @@ Opps! Don't forget to install Dash.
 pip3 install --user dash==1.14.0
 ```
 
-## Talk to you peers about this section!
+## Talk to each other about this section!
 
 These coropleth map examples (`app00.py`--`app03.py`) exhibit a legacy "figure factory" method for creating map-like figures using self-filled scatter traces.  The last map example (`app04.py`) does not use this legacy feature, and is hence "probably the best example".
 
