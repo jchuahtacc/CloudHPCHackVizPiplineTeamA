@@ -1,24 +1,45 @@
 ---
 title: USA County Choropleth Maps
 date: 2020-07-28
+author: Colton Grainger
 source: "https://plotly.com/python/county-choropleth"
-copyright: 2020 Plotly.
+copyright: 2020 Plotly
 ---
 
 ## Learn you the command line for great good
 
+0. Do you have `git`? Can you clone this repo? 
+
+```
+git clone https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/tree/master/choropleth_examples
+```
+
 1. Navigate (with the command line) to the same directory as the README.md. 
 
-2. **Am I in the correct directory?** (The command is `ls` for a unix-like / `dir` for windows.) If so, my terminal output should look like this:
+```
+cd CloudHPCHackVizPiplineTeamA/choropleth_examples
+```
 
-```sh
-$ ls
+2. **Am I in the correct directory?** (The command is `ls` for a unix-like / `dir` for windows.) 
+
+*command line input*
+
+```
+ls
+```
+
+*desired output*
+
+```
 app00.py  app01.py  app02.py  app03.py	README.md
 ```
 
-3. Try this: `python3 app00.py`. No output? Look at <https://127.0.0.1:8050>.
+3. Try this *command line input*: `python3 app00.py`. No output? Look at <https://127.0.0.1:8050>.
 
-4. Something's wrong? Have you installed the **required packages** with `pip3`?
+4. Something's wrong? Have you installed the **required packages** with `pip3`? 
+
+> Never `pip3` with `sudo`! The install command `pip3 install --user` is my preference, and probably the wrong way to do things, but fine for a hackathon. 
+
 
 ## Required Packages
 
@@ -34,7 +55,7 @@ pip3 install --user shapely==1.6.3
 
 Opps! Don't forget to install Dash.
 
-```
+```sh
 pip3 install --user dash==1.14.0
 ```
 
