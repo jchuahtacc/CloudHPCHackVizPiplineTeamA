@@ -1,5 +1,5 @@
 REQUIREMENTS=`find . -name "requirements.txt"`
 
 for requirement in $REQUIREMENTS; do
-	pip install -r $requirement
+	pip3 install --user -r $requirement
 done

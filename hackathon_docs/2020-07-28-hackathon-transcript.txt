@@ -1,0 +1,892 @@
+---
+title: 
+author: Colton Grainger
+date: 2020-07-28
+revised:
+---
+
+Colton Grainger  1:58 PM
+https://dash-gallery.plotly.host/Portal/
+
+dash-gallery.plotly.host
+Dash Enterprise
+Dash Enterprise
+1:58
+https://covid-19.tacc.utexas.edu/dash/mortality-rates-dash/
+1:59
+https://coronavirus.jhu.edu/
+
+Johns Hopkins Coronavirus Resource CenterJohns Hopkins Coronavirus Resource Center
+Home
+Johns Hopkins experts in global public health, infectious disease, and emergency preparedness have been at the forefront of the international response to COVID-19. (38 kB)
+https://coronavirus.jhu.edu/images/jhu_covid_19_generic.png
+2:03
+http://www.pythontutor.com/visualize.html#mode=edit
+2:04
+2 files
+2016-vanderplas-a-whirlwind-tour-of-python.pdf
+3 MB PDF3 MB — Click to view
+
+
+2016-vanderplas-python-data-science-handbook.pdf
+21 MB PDF21 MB — Click to view
+
+
+
+Daniel Lamb  2:12 PM
+https://github.com/nytimes/covid-19-data/blob/master/us-states.csv  GitHub data from the NyTimes. It has data from the first recorded case in January to the 26th of July, it is constantly updated. (edited)
+
+Joon Yee Chuah (Mentor)  2:21 PM
+@Daniel Lamb that's a well curated source of data.
+
+Daniel Lamb  2:33 PM
+So what did you guys want to do with whatever we decided. Were we trying to compare it to something on the graph or what... Im kinda stuck on how and what I should be doing in plotly and how I should go about this. (edited)
+2:34
+Thank you, the summer program that I was in introduced me to it because we had to do a project with those data sets
+
+Colton Grainger  2:34 PM
+can you reproduce an example from https://dash-gallery.plotly.host/Portal/
+
+dash-gallery.plotly.host
+Dash Enterprise
+Dash Enterprise
+
+Kellen Hill  2:35 PM
+I'm walking through the plotly dash tutorial here: https://dash.plotly.com/installation
+dash.plotly.comdash.plotly.com
+Part 1. Installation | Dash for Python Documentation | Plotly
+How to install and upgrade dash libraries with pip
+
+Daniel Lamb  2:36 PM
+so for right now i'm just trying to get the data on to a plotly graph
+
+Colton Grainger  2:46 PM
+yeah, for example, you could fork https://github.com/plotly/dash-sample-apps and try to get these running on your own machine
+
+plotly/dash-sample-apps
+Apps hosted in the Dash Gallery
+Website
+https://dash-gallery.plotly.host/Portal/
+Stars
+957
+<https://github.com/plotly/dash-sample-apps|plotly/dash-sample-apps>plotly/dash-sample-apps | Apr 9th, 2019 | Added by GitHub
+2:47
+once you're able to run one of the demo dash apps, try making your own (probably just a basic histogram or something similar) from a COVID-19 csv dataset that you've pulled from the web
+
+Daniel Lamb  2:50 PM
+Ok thanks!
+
+Colton Grainger  2:52 PM
+this app is particularly interesting, since it's live updating https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-wind-streaming
+
+Colton Grainger  3:00 PM
+Kellen / Daniel, were y'all able to run one of the dash-sample-apps from https://github.com/plotly/dash-sample-apps on your own machine?
+
+Kellen Hill  3:01 PM
+I'm running into an error with not having pandas installed so I'm working through that
+
+Daniel Lamb  3:01 PM
+i didnt get to try it with any data that i found or anything i was watching a tutorial but i can try real quick
+
+Colton Grainger  3:02 PM
+@Kellen Hill Try How to run this app
+(The following instructions apply to Posix/bash. Windows users should check here.)
+First, clone this repository and open a terminal inside the root folder.
+Create and activate a new virtual environment (recommended) by running the following:
+python3 -m venv myvenv
+source myvenv/bin/activate
+Install the requirements:
+pip install -r requirements.txt
+Run the app:
+python app.py
+
+Daniel Lamb  3:03 PM
+do we need this for the presentation in a hour
+
+Colton Grainger  3:03 PM
+from https://github.com/coltongrainger/dash-sample-apps/tree/master/apps/dash-wind-streaming
+
+Kellen Hill  3:04 PM
+I was still working on the tutorial link I had posted, but I can give that a shot
+
+Colton Grainger  3:04 PM
+@Daniel Lamb no, for the presentation we just need to get our names on a PDF page, and some goals. I'm happy to put that together in like 40 minutes if you want more time to explore
+:+1:
+1
+
+
+Kellen Hill  3:04 PM
+Regardless of where we are with learning plotly, we should get to work on the presentation so we're not rushing just before 6
+
+Colton Grainger  3:04 PM
+@Kellen Hill I think using a venv would get you around installing pandas
+
+Joon Yee Chuah (Mentor)  3:05 PM
+Something to think about is that this is the challenge of using plotly
+3:05
+perhaps your goal could be how to get past these rough edges
+
+Colton Grainger  3:05 PM
+hmm (edited)
+
+Joon Yee Chuah (Mentor)  3:05 PM
+some of our data scientists can't get past just the "hello world" of plotly (even though they can do other brilliant things)
+:+1:
+1
+
+
+Colton Grainger  3:08 PM
+@Kellen Hill @Daniel Lamb Can we videocall in, say, 30 minutes? It shouldn't take long to type out our goals and names and team name; I can do this when we meet and send it to Je'aime.
+
+Kellen Hill  3:08 PM
+Thumbs up
+
+Daniel Lamb  3:08 PM
+cool
+
+Colton Grainger  3:13 PM
+back to the dash-wind-streaming example, this is the type of Python source code we might fork and develop for our own purposes... https://github.com/coltongrainger/dash-sample-apps/blob/master/apps/dash-wind-streaming/app.py
+
+apps/dash-wind-streaming/app.py
+```
+import os
+import pathlib
+import numpy as np
+import datetime as dt
+Show more
+<https://github.com/coltongrainger/dash-sample-apps|coltongrainger/dash-sample-apps>coltongrainger/dash-sample-apps | Added by GitHub
+
+Joon Yee Chuah (Mentor)  3:14 PM
+also, other challenges with dash are that simply running it on your computer is not equivalent to putting it on the web
+
+1 reply
+1 day agoView thread
+
+Joon Yee Chuah (Mentor)  3:14 PM
+those are other things you can help solve
+
+Colton Grainger  3:25 PM
+some simple dash apps described here:
+https://dash.plotly.com/basic-callbackse
+(edited)
+
+dash.plotly.comdash.plotly.com
+Basic Callbacks | Dash for Python Documentation | Plotly
+Go through this introductory chapter to learn the foundations of the Dash callback.
+3:25
+@Joon Yee Chuah (Mentor), do you have the source code for https://covid-19.tacc.utexas.edu/dash/hello_world/
+
+Joon Yee Chuah (Mentor)  3:26 PM
+it's private i can send you some parts though
+3:26
+what specifically do you need?
+
+Colton Grainger  3:26 PM
+how about the app.py file?
+
+Joon Yee Chuah (Mentor)  3:26 PM
+it's all in the app.py!
+
+Colton Grainger  3:26 PM
+ekk
+3:26
+sorry
+3:27
+could you tell us about the deploy process for those dash apps in particular?
+
+Joon Yee Chuah (Mentor)  3:27 PM
+certainly
+
+Colton Grainger  3:27 PM
+ty
+
+Joon Yee Chuah (Mentor)  3:27 PM
+there's a wrapper flask app that i have setup to serve multiple dashes
+3:28
+oh wait you're just asking for hello world lol
+3:29
+let me sanitize this and put it up
+
+Colton Grainger  3:29 PM
+well, yeah, the hello_world_app.py would be instructive, but also knowing how the wrapper flask app is setup could be useful for a scientist wanting to "create their own dashboard gallery"
+3:29
+ty again
+
+Colton Grainger  3:36 PM
+@Kellen Hill @Daniel Lamb ready to call in 5 minutes?
+
+Daniel Lamb  3:36 PM
+yea
+
+Kellen Hill  3:36 PM
+Yeah
+Added to your saved items
+
+Joon Yee Chuah (Mentor)  3:36 PM
+@Colton Grainger ok i pushed it up to github
+3:36
+it's a Flask app that wraps and serves dash apps
+
+Daniel Lamb  3:43 PM
+were we going to get on?
+3:43
+the call
+
+Colton Grainger  4:04 PM
+https://github.com/coltongrainger/dotfiles/blob/master/fy/21/pearc20/2020-07-27-goals.pdf
+4:05
+team goals
+4:08
+hey @Daniel Lamb @Kellen Hill we can chat on here further during this meeting
+4:09
+what sort of intermediate goals do you think we should try to tackle tonight?
+
+Kellen Hill  4:09 PM
+Gaining basic familiarity with the tools being used
+4:10
+Narrowing down the data sets we are interested in pursuing
+
+Daniel Lamb  4:10 PM
+yea learning how plotly works
+Added to your saved items
+
+Colton Grainger  4:10 PM
+do you think you could get through the https://dash.plotly.com/layout part of the tutorial tonight?
+
+dash.plotly.comdash.plotly.com
+Part 2. Layout | Dash for Python Documentation | Plotly
+The Dash layout describes what your app will look like and is composed of a set of declarative Dash components.
+4:10
+both*
+
+Daniel Lamb  4:11 PM
+yea
+
+Kellen Hill  4:11 PM
+I'll give it a shot
+Added to your saved items
+
+Colton Grainger  4:11 PM
+we could work together on staying online via slack
+4:11
+as in, work through the tutorial together to get through whatever git/python issues come up
+4:13
+a second goal might be to look at Joon Yee's https://covid-19.tacc.utexas.edu/dash/ (gallery) and https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/tree/master/dash_rolodex_public (which is the backend for the gallery)
+
+Daniel Lamb  4:25 PM
+who's presenting
+
+Colton Grainger  4:26 PM
+Do you want to ?
+
+Daniel Lamb  4:26 PM
+nooo
+
+Colton Grainger  4:26 PM
+u sure?
+4:26
+it's fun!
+
+Daniel Lamb  4:26 PM
+yes!
+
+Colton Grainger  4:27 PM
+@Kellen Hill you want to present?
+
+Kellen Hill  4:28 PM
+Sure. Did you pull down a pdf? Or should I just use a screen shot of the github page?
+
+Colton Grainger  4:29 PM
+https://github.com/coltongrainger/dotfiles/blob/master/fy/21/pearc20/2020-07-27-goals.pdf
+4:29
+2019-06-24-colton.jpg
+2019-06-24-colton.jpg
+
+
+4:29
+everyone pics quick!
+
+Daniel Lamb  4:30 PM
+DSC_1297.jpg
+DSC_1297.jpg
+
+
+
+Colton Grainger  4:31 PM
+dope!
+
+Daniel Lamb  4:31 PM
+maybe we should have did a google slide. lol
+
+Kellen Hill  4:31 PM
+image.png
+image.png
+
+
+
+Colton Grainger  4:43 PM
+The one-pager is updated with photos. Thanks! I forgot! We can get some $$ at a later challenge.
+4:46
+https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/tree/master/hackathon_docs
+
+Joon Yee Chuah (Mentor)  4:52 PM
+would y'all like to do a quick slack call to figure out what you're working on before next check in?
+
+Colton Grainger  4:53 PM
+yes
+
+Daniel Lamb  4:53 PM
+yes
+
+Colton Grainger  5:12 PM
+Hey, I'm going to step away for 30 minutes to eat.
+:+1:
+1
+
+
+Daniel Lamb  5:13 PM
+ok
+
+Daniel Lamb  6:09 PM
+i'm back
+
+Kellen Hill  6:10 PM
+Same here. Just trying to figure out getting a virtual environment up and running
+
+Colton Grainger  6:11 PM
+yo yo! we're talking with Joon in 1 hour. Dinner took longer than I was expecting. Would the two of you want to start peer-programming?
+
+Kellen Hill  6:11 PM
+I could use another set of eyes
+
+Daniel Lamb  6:12 PM
+sure
+
+Colton Grainger  6:12 PM
+Daniel, would you want to help Kellen out?
+
+Joon Yee Chuah (Mentor)  6:57 PM
+y'all ready for a check-in?
+6:58
+@here?
+
+Kellen Hill  6:58 PM
+I think so. @Colton Grainger was able to get me to a point with the tutorial to run it. We are super close for @Daniel Lamb
+
+Joon Yee Chuah (Mentor)  6:59 PM
+oh, ok. would you rather me check in with y'all later? i don't want to interrupt
+
+Kellen Hill  7:00 PM
+We should be good in one or two minutes
+
+Joon Yee Chuah (Mentor)  7:00 PM
+ah ok. just start a call in this channel when ready
+:+1:
+1
+
+
+Colton Grainger  8:07 PM
+https://dash-gallery.plotly.host/dash-opioid-epidemic/
+
+Colton Grainger  8:27 PM
+I know it's a bit late Eastern time; Daniel and Kellen, are y'all still game to peer program ?
+
+Kellen Hill  8:28 PM
+I'm up for a bit more tonight
+
+Daniel Lamb  8:29 PM
+yea im up
+
+Colton Grainger  8:31 PM
+Cool! Could we take a look at https://gitolite.com/gcs.html#(1) and start a videochat? Maybe go around screen sharing?
+8:31
+Call
+Call Ended
+Ended at 9:58 PM - Lasted 1 hour and 27 minutes
+
+3 people joined
+
+Colton Grainger  9:30 PM
+CloudHPCHackVizPiplineTeamA
+
+Colton Grainger  8:19 AM
+10 minutes until Joon Yee is available (edited)
+
+Joon Yee Chuah (Mentor)  8:31 AM
+Call
+Call Ended
+Ended at 9:28 AM - Lasted 56 minutes
+
+4 people joined
+
+Kellen Hill  10:13 AM
+I think this is the COVID data set I think would be best to work with since it includes all states and is updated regularly. At this point in time, we would mainly focus on three columns (date, state, and death). Any thoughts or concerns?
+https://covidtracking.com/api/v1/states/current.csv
+
+Colton Grainger  10:16 AM
+sounds good
+
+Kellen Hill  10:34 AM
+Ready to get a call started for our 1pm update?
+10:34
+Call
+Call Ended
+Ended at 11:00 AM - Lasted 25 minutes
+
+3 people joined
+
+Daniel Lamb  10:50 AM
+Critique an inserted file to python so that it connects to the server. Make a template that users can easily input their data and label properties.
+10:52
+plotly with our own data
+
+Kellen Hill  10:53 AM
+Python program to import and clean a linked data set (ETL)
+Need a readme to direct user on use and modification of the program
+User modifies program to import their own data set and identify desired fields to pass to plotly
+ (edited)
+
+Colton Grainger  10:53 AM
+I am engineering an on-demand environment for plotly dash by spinning up a cloudycluster environment with a control node, login node, and ability to submit jobs via the ccqclient.py. (edited)
+
+Daniel Lamb  10:55 AM
+3 step process
+10:56
+3 step process
+extract data from a given source to pass along to plot ly
+
+Joon Yee Chuah (Mentor)  10:58 AM
+i recommend allowing the user to specify a metadata.json to describe their data
+10:58
+rather than having to modify python code.
+
+Colton Grainger  10:58 AM
+kk
+
+Joon Yee Chuah (Mentor)  10:58 AM
+that way you can write the python to just process something like:
+{
+ "states": "mystatefield",
+10:58
+"timestamp": "mytimestampfield",
+"value": "myvaluefield"
+}
+
+Joon Yee Chuah (Mentor)  11:04 AM
+OKAY THERE IS ALWAYS MONEY ON THE LINE AT EVERY CHECK IN
+
+Colton Grainger  11:05 AM
+i think the cat is pretty $$$
+
+Daniel Lamb  11:05 AM
+we’re gonna need a better summary
+
+Colton Grainger  11:05 AM
+ok, what do you have in terms of the 3 step process?
+
+Daniel Lamb  11:06 AM
+extract data from a given source to pass along to plot ly
+make a on-demand environment for plotly dash
+Make a template that users can easily input their data and label properties
+
+Colton Grainger  11:07 AM
+"Make a template that users can easily input their data and label properties" belongs to Kellen I think, so step 1
+11:07
+could step 3 focus on parsing the well formatted dataset?
+11:08
+parsing and generating a plotly graphic?
+11:08
+Kellen, could you say more about the fields that you believe should be included in step 1?
+11:09
+otherwise, Daniel, that sounds good
+
+Daniel Lamb  11:09 AM
+yall want to make a slide?
+11:09
+google slidde
+
+Kellen Hill  11:09 AM
+Yeah, I can elaborate on those fields
+11:09
+Sounds like we'll get another 15 minutes to work on it
+
+Colton Grainger  11:09 AM
+can you whip up a google slide Kellen?
+
+Joon Yee Chuah (Mentor)  11:10 AM
+if you want the $$$ remember to summarize and sell
+11:10
+show your objectives
+11:10
+be fine grained enough to look like you know exactly what you are doing today, but don't over describe
+
+Daniel Lamb  11:11 AM
+if you make a slide share it with me
+11:11
+dancarlam@gmail.com
+
+Kellen Hill  11:15 AM
+https://docs.google.com/presentation/d/1WUaHs4uUGFMXWVJcdV-NoSPKZ3F3NzKDrGEH-02yaeI/edit?usp=sharing
+
+Colton Grainger  11:22 AM
+2020-07-28-amigos.png
+2020-07-28-amigos.png
+
+
+
+Colton Grainger  11:32 AM
+y'all happy
+11:32
+?
+11:32
+looks good all
+
+Daniel Lamb  11:32 AM
+yea
+
+Colton Grainger  11:32 AM
+Does Kellen want to start?
+
+Kellen Hill  11:33 AM
+Can do
+
+Colton Grainger  11:33 AM
+'m going to type here what I'm going to say
+
+Kellen Hill  11:33 AM
+I can do the screen share as well
+
+Daniel Lamb  11:35 AM
+ok
+
+Colton Grainger  11:39 AM
+can we drop the cinco de mayo hat?
+11:42
+anyways, it's good, just keep it tight wrt the time limit so that we can take questions
+
+Daniel Lamb  11:54 AM
+good job guys
+:+1:
+2
+
+
+Colton Grainger  12:09 PM
+good work y'all
+
+Colton Grainger  12:15 PM
+what were we supposed to do with our venmo handles
+
+Kellen Hill  12:16 PM
+DM them to Jeaime
+
+Colton Grainger  12:19 PM
+this is cool, but what I'm focusing on
+
+Joon Yee Chuah (Mentor)  12:35 PM
+if y'all need me can you ping me with @Joon Yee Chuah (Mentor)?
+12:36
+I'm suffering from slack hell right now and missing messages
+
+Colton Grainger  12:44 PM
+@Joon Yee Chuah (Mentor) sounds good
+
+Daniel Lamb  1:37 PM
+whenever you get back Colton just let me know no rush at all
+
+1 reply
+Today at 1:44 PMView thread
+
+Daniel Lamb  1:45 PM
+whenever you’re good can i share my screen
+
+Colton Grainger  1:52 PM
+daniel, can you start a call
+
+Joon Yee Chuah (Mentor)  2:11 PM
+ok i'm available now
+
+Daniel Lamb  2:55 PM
+Hey @Joon Yee Chuah (Mentor) I pushed it to github https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/compare/plot?expand=1
+
+Joon Yee Chuah (Mentor)  2:58 PM
+which directory?
+
+Daniel Lamb  2:59 PM
+intro.py
+2:59
+I think
+
+Joon Yee Chuah (Mentor)  3:00 PM
+ah ok i think this is not terribly difficult
+3:00
+you're feeding the dataframe into the choropleth?
+3:00
+with data_frame=dff
+
+Colton Grainger  3:00 PM
+https://gesis.mybinder.org/binder/v2/gh/ipython/ipython-in-depth/7e5ce96cc9251083979efdfc393425f1229a4a68
+
+notebooks.gesis.orgnotebooks.gesis.org
+GitHub: ipython/ipython-in-depth/7e5ce96cc9251083979efdfc393425f1229a4a68
+Click to run this interactive environment. From the Binder Project: Reproducible, sharable, open, interactive computing environments.
+
+Daniel Lamb  3:01 PM
+uhhhh im not quite sure im looking now
+
+Joon Yee Chuah (Mentor)  3:01 PM
+https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/blob/761493f6ca9f98676ec83c77d0672430da251d9e/intro.py#L64
+intro.py:64
+        data_frame=dff,
+<https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA|jchuahtacc/CloudHPCHackVizPiplineTeamA>jchuahtacc/CloudHPCHackVizPiplineTeamA | Added by GitHub
+
+Daniel Lamb  3:01 PM
+this is all really new to me
+
+Joon Yee Chuah (Mentor)  3:01 PM
+that line
+3:02
+let me call you real quick
+
+Daniel Lamb  3:02 PM
+ok
+
+Joon Yee Chuah (Mentor)  3:02 PM
+Call
+Call Ended
+Ended at 3:10 PM - Lasted 7 minutes
+
+2 people joined
+
+Kellen Hill  3:45 PM
+Let's work on getting our presentation together before 6pm here
+3:45
+Call
+Call Ended
+Ended at 3:53 PM - Lasted 8 minutes
+
+1 person joined
+3:49
+Made a copy of this morning's slides for us to modify for tonight's updates
+3:49
+https://docs.google.com/presentation/d/1JkPJFu-gPJMiU4CCZSix9kEkvXj_qLGj7OanSWB2FCg/edit?usp=sharing
+3:51
+Group call starts in 9 minutes, right?
+
+Kellen Hill  3:58 PM
+Go ahead and make edits to where you're currently at on the slide if you can
+3:59
+My snipping skills are sub-par, but I did get Joon Yee added to the slide
+3:59
+image.png
+image.png
+
+
+
+Joon Yee Chuah (Mentor)  4:02 PM
+perfect
+
+Kellen Hill  4:03 PM
+@Daniel Lamb Can you update your bullets on the slides linked above?
+
+Joon Yee Chuah (Mentor)  4:03 PM
+i've never seeen myself as being able to pull off a sombrero but you've clearly proven me wrong
+:joy:
+1
+
+
+Daniel Lamb  4:03 PM
+yea
+:+1:
+2
+
+
+Colton Grainger  4:08 PM
+I'm going to eat during this meeting, probably do some dishes and get ready to stay up late tonight, probably going offline at 12p mountain time, then online again at 7am mountain time.
+4:09
+@Kellen Hill @Daniel Lamb Maybe take some time to hone your git workflow tonight, so that we can all commit & push to GitHub w/o terrible pain tomorrow.
+:+1:
+1
+
+4:09
+ty
+
+Daniel Lamb  4:09 PM
+cool
+
+Colton Grainger  4:10 PM
+The rest of the night I think I'll just focus on asking folks in cloudycluster for advice/support.
+
+Colton Grainger  5:25 PM
+https://plotly.com/python/choropleth-maps/
+
+plotly.complotly.com
+Choropleth Maps
+How to make choropleth maps in Python with Plotly.
+
+Colton Grainger  6:29 PM
+@Daniel Lamb @Kellen Hill would you have time to take a look at https://github.com/jchuahtacc/CloudHPCHackVizPiplineTeamA/tree/master/choropleth_examples
+6:30
+these are command line examples to get the example plotly dash choropleth maps running
+
+Kellen Hill  6:34 PM
+I'm going to try exporting a csv using pandas and then I'll look into that
+6:36
+Any thoughts on where I should be exporting a csv to? I guess that could differ from user to user and would need to be specified by a user when they are setting up to program for their purposes
+
+Colton Grainger  6:42 PM
+sorry
+6:43
+create a directory in the git repo, on your own branch.
+6:43
+write the scripts in that directory
+6:43
+export the CSV files to that directory
+6:43
+seriously
+6:43
+do not let the user decide
+6:44
+it doesn't work that way: usually they make bad choices if they don't know what's going on, and if they do know what's going on, they can modify our code to bend it to their will.
+6:48
+@Kellen Hill how's it going? do you need any support interacting with the file system in python (edited)
+6:48
+?
+
+Kellen Hill  6:49 PM
+I'm working on chopping out all of the unused fields in my csv. A bit tedious when there are so many of them. I think I'm making good progress for cutting it down to the main fields and exporting a csv
+
+Colton Grainger  6:50 PM
+drop_these = ['column_name1', 'column_name2', 'last_columns']
+df = df.drop(columns=drop_these)
+
+Joon Yee Chuah (Mentor)  6:52 PM
+It may be easier to construct a data frame with fields you want rather than the other way around.
+
+Kellen Hill  6:53 PM
+So I created a data frame with the ones I wanted, but I didn (edited)
+6:54
+'t see how to output that as a csv, but I figured out how to chop them from the frame and then output that
+
+Colton Grainger  6:55 PM
+df = pd.DataFrame({'name': ['Raphael', 'Donatello'],
+                   'mask': ['red', 'purple'],
+                   'weapon': ['sai', 'bo staff']})
+df.to_csv(index=False)
+output
+'name,mask,weapon\nRaphael,red,sai\nDonatello,purple,bo staff\n'
+
+Kellen Hill  6:56 PM
+It worked!
+6:57
+How do I get rid of a field with a null field name though?
+6:57
+image.png
+image.png
+
+
+6:57
+Is it just ""
+
+Colton Grainger  6:58 PM
+with open('target.csv', 'w') as f:
+    f.write(df.to_csv(index=False))
+6:58
+?
+6:58
+index=False?
+6:59
+or
+df.to_csv('target.csv', index=False)
+6:59
+?
+
+Kellen Hill  6:59 PM
+So index=False should recognize a null value header?
+
+Daniel Lamb  7:00 PM
+are yall getting on the zoom call with the other team or are we just going to continue working
+
+Colton Grainger  7:00 PM
+once sec
+
+Kellen Hill  7:00 PM
+Oh yeah, that just started. I'll jump on
+
+Joon Yee Chuah (Mentor)  7:00 PM
+I'm still cooking dinner.
+
+Colton Grainger  7:00 PM
+index=False should recognize a null value header?
+7:00
+what does your output look like with index=False as a parameter?
+
+Kellen Hill  7:04 PM
+This is what it is currently
+7:04
+image.png
+image.png
+
+
+7:04
+What should my target.csv be? Should that be the initial csv that's pulled in? Or the modified on that I'm saving?
+
+Colton Grainger  7:06 PM
+ok, try a relative path. also, what directory is your PyCharm project in?
+
+Kellen Hill  7:06 PM
+I have not pushed it up yet
+
+Colton Grainger  7:06 PM
+I mean to say, would it be so evil to work in the git repo with PyCharm?
+7:07
+But regardless, a relative path is just the name of the file relative to the directory the python interpreter is running in
+
+Kellen Hill  7:07 PM
+C:\Users\USER\PycharmProjects\Coviddata\InputData.py (edited)
+
+Colton Grainger  7:09 PM
+ok, so
+df.to_csv(r'C:\Users\USER\PycharmProjects\Coviddata\here.csv', index=False)
+is equivalent to
+df.to_csv('here.csv', index=False)
+if you're running PyCharm's python interpreter in the directory
+C:\Users\USER\PycharmProjects\Coviddata
+7:09
+do you want to just screen share for a second?
+
+Kellen Hill  7:09 PM
+Yeah
+
+Kellen Hill  8:38 PM
+@Daniel Lamb grab a screenshot of the map if you can to post it in here
+
+Daniel Lamb  8:41 PM
+Screen Shot 2020-07-28 at 10.40.28 PM (2).png
+Screen Shot 2020-07-28 at 10.40.28 PM (2).png
+
+
+
+Kellen Hill  8:41 PM
+Also, @Colton Grainger we discussed doing a check in at 11am EST tomorrow morning on the other call
+
+Colton Grainger  8:42 PM
+boom done
+8:42
+daniel that looks most dope
+
+Kellen Hill  8:45 PM
+We'll most likely end up swapping to the data set Daniel is working off of since we just built the plotly around it a bit
+
+Colton Grainger  8:46 PM
+sounds good to me; you're driving here
+8:46
+*there
+
+Kellen Hill  8:46 PM
+Yeah, it shouldn't be difficult to make that swap with where I'm at
+
+Colton Grainger  8:46 PM
+do y'all think you could post a 'minimal working example' to the github tonight?
+
+Kellen Hill  8:47 PM
+I guess @Daniel Lamb would just need to get his code pushed for that to happen

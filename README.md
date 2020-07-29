@@ -17,3 +17,7 @@ Repo for [PEARC20 Hackathon](https://jeaimehp.github.io/HackHPC-Pearc20/).
 > I, as a data scientist who knows a little python and has geo-spatial time series data, want 
 > 1. to visualize an interactive regional heatmap (color = net change over time interval) and 
 > 2. to publish this visualization for a large public audience.
+
+## data source
+
+<https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv>
